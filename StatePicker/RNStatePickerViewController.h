@@ -8,18 +8,20 @@
 
 @property (nonatomic, strong) NSString *stateName;
 @property (nonatomic, strong) NSString *stateCode;
-@property (nonatomic, strong) NSString *stateAssetPath;
+@property (nonatomic, strong) UIImage *stateImage;
 
 @end
 
 @interface RNState : NSObject<RNState>
 
++ (instancetype)stateWithCode:(NSString*)stateCode inCountry:(NSString*)countryCode;
+
 @end
 
 @interface RNStatePickerViewController : UITableViewController
 
-@property (nonatomic, copy) void (^completionBlock)(id<RNState> state, UIImage *flag);
+@property (nonatomic, copy) void (^completionBlock)(id<RNState> state);
 
-- (instancetype)initWithCountry:(NSString*)countryCode andStates:(NSArray*)states customBundle:(NSBundle*)bundle;
+- (instancetype)initWithCountry:(NSString*)countryCode andStates:(NSArray*)states;
 
 @end

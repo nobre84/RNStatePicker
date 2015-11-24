@@ -38,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		0044C7621C03A35E00F813F8 /* StateFlags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = StateFlags.xcassets; sourceTree = "<group>"; };
+		0044C7641C0495F500F813F8 /* RNStatePickerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RNStatePickerViewController.h; sourceTree = "<group>"; };
 		007A6B811C03777600CA29B8 /* states.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = states.plist; sourceTree = "<group>"; };
 		D0C16F2B1844FA5C00EF63BE /* StatePickerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StatePickerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0C16F2E1844FA5C00EF63BE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -162,6 +163,7 @@
 		D0C16F631844FCD500EF63BE /* StatePicker */ = {
 			isa = PBXGroup;
 			children = (
+				0044C7641C0495F500F813F8 /* RNStatePickerViewController.h */,
 				D0C16F661844FCD500EF63BE /* RNStatePickerViewController.m */,
 				007A6B811C03777600CA29B8 /* states.plist */,
 				0044C7621C03A35E00F813F8 /* StateFlags.xcassets */,

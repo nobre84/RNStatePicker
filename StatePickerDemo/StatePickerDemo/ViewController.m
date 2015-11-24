@@ -31,9 +31,9 @@
 - (IBAction)chooseCountry:(id)sender {
     
     RNStatePickerViewController *vc = [[RNStatePickerViewController alloc]init];
-    vc.completionBlock = ^(id<RNState> state, UIImage *flag){
+    vc.completionBlock = ^(id<RNState> state) {
         _countryNameLabel.text = state.stateName;
-        _countryImageView.image = flag;
+        _countryImageView.image = state.stateImage;
         _countryCodeLabel.text = state.stateCode;
 
     };

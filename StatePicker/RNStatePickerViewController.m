@@ -10,7 +10,24 @@ static NSString *statePlistName = @"states";
 
 @implementation RNState
 
-@synthesize stateName, stateCode, stateAssetPath;
+@synthesize stateName, stateCode, stateImage;
+
++ (instancetype)stateWithCode:(NSString*)stateCode inCountry:(NSString*)countryCode {
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:statePlistName ofType:@"plist"];
+    NSDictionary *statesDict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
+    NSArray *selectedStates = statesDict[countryCode];
+    if (selectedStates) {
+        NSDictionary *stateDict = [[selectedStates filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"stateCode = %@", stateCode]] firstObject];
+        if (statesDict) {
+            RNState *state = [RNState new];
+            state.stateCode = stateDict[@"code"];
+            state.stateName = stateDict[@"name"];
+            state.stateImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", countryCode, state.stateCode]];
+            return state;
+        }
+    }
+    return nil;
+}
 
 @end
 
@@ -23,7 +40,6 @@ static NSString *statePlistName = @"states";
     NSArray *_sections;
     NSString *_countryCode;
     NSArray *_states;
-    NSBundle *_bundle;
 }
 
 - (instancetype)init {
@@ -37,7 +53,7 @@ static NSString *statePlistName = @"states";
             RNState *state = [RNState new];
             state.stateCode = stateDict[@"code"];
             state.stateName = stateDict[@"name"];
-            state.stateAssetPath = [NSString stringWithFormat:@"%@_%@", _countryCode, state.stateCode];
+            state.stateImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", _countryCode, state.stateCode]];
             [states addObject:state];
         }];
         _states = states;
@@ -45,11 +61,10 @@ static NSString *statePlistName = @"states";
     return self;
 }
 
-- (instancetype)initWithCountry:(NSString *)countryCode andStates:(NSArray<RNState> *)states customBundle:(NSBundle *)bundle {
+- (instancetype)initWithCountry:(NSString *)countryCode andStates:(NSArray<RNState> *)states {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         _countryCode = countryCode;
         _states = states;
-        _bundle = bundle;
     }
     return self;
 }
@@ -211,7 +226,7 @@ static NSString *statePlistName = @"states";
         cell.textLabel.font = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     }
 
-    cell.imageView.image = [UIImage imageNamed:cd.stateAssetPath inBundle:_bundle compatibleWithTraitCollection:nil];
+    cell.imageView.image = cd.stateImage;
     NSLog(@"%@", cd.stateCode);
     return cell;
 }
@@ -231,7 +246,7 @@ static NSString *statePlistName = @"states";
         else {
             cd = _sections[indexPath.section][indexPath.row];
         }
-        self.completionBlock(cd, [UIImage imageNamed:cd.stateAssetPath inBundle:_bundle compatibleWithTraitCollection:nil]);
+        self.completionBlock(cd);
     }
     
     [self.navigationController popViewControllerAnimated:YES];
