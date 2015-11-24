@@ -44,6 +44,22 @@
                                 <rect key="frame" x="20" y="312" width="36" height="36"/>
                                 <animations/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DJX-ti-yJX">
+                                <rect key="frame" x="70" y="373" width="158" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvJ-24-bY9">
+                                <rect key="frame" x="236" y="372" width="48" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Search">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="search:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="PDW-VQ-ruf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -53,6 +69,7 @@
                         <outlet property="countryCodeLabel" destination="Io6-qX-eIx" id="WGw-ku-LYY"/>
                         <outlet property="countryImageView" destination="ofx-Ea-2Hm" id="ELC-gH-mLu"/>
                         <outlet property="countryNameLabel" destination="qSH-DK-ZyI" id="jVf-PJ-6rC"/>
+                        <outlet property="tfSearch" destination="DJX-ti-yJX" id="AhB-05-Jex"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

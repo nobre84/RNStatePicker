@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RNStatePicker"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "State picker table view controller for iOS 7+"
   s.description  = <<-DESC
 Table view controller with searchable list of states with completion block and dynamic fonts support.

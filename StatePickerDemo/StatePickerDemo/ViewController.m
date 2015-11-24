@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *countryImageView;
 @property (weak, nonatomic) IBOutlet UILabel *countryNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countryCodeLabel;
+@property (weak, nonatomic) IBOutlet UITextField *tfSearch;
 @end
 
 @implementation ViewController
@@ -41,4 +42,12 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)search:(id)sender {
+    RNState *state = [RNState stateWithCode:self.tfSearch.text inCountry:@"BR"];
+    if (state) {
+        _countryNameLabel.text = state.stateName;
+        _countryImageView.image = state.stateImage;
+        _countryCodeLabel.text = state.stateCode;
+    }
+}
 @end

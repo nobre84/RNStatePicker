@@ -17,7 +17,7 @@ static NSString *statePlistName = @"states";
     NSDictionary *statesDict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     NSArray *selectedStates = statesDict[countryCode];
     if (selectedStates) {
-        NSDictionary *stateDict = [[selectedStates filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"stateCode = %@", stateCode]] firstObject];
+        NSDictionary *stateDict = [[selectedStates filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"code = %@", stateCode]] firstObject];
         if (statesDict) {
             RNState *state = [RNState new];
             state.stateCode = stateDict[@"code"];
