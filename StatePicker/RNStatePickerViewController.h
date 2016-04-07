@@ -15,6 +15,8 @@
 @interface RNState : NSObject<RNState>
 
 + (instancetype)stateWithCode:(NSString*)stateCode inCountry:(NSString*)countryCode;
++ (UIImage*)imageForState:(NSString*)stateCode inCountry:(NSString*)countryCode;
+
 
 @end
 

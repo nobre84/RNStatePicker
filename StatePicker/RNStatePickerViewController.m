@@ -29,6 +29,10 @@ static NSString *statePlistName = @"states";
     return nil;
 }
 
++ (UIImage*)imageForState:(NSString*)stateCode inCountry:(NSString*)countryCode {
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", countryCode, stateCode]];
+}
+
 @end
 
 @interface RNStatePickerViewController ()<UISearchDisplayDelegate, UISearchBarDelegate>
