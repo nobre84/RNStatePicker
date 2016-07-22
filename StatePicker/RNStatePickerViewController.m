@@ -13,7 +13,7 @@ static NSString *statePlistName = @"states";
 @synthesize stateName, stateCode, stateImage;
 
 + (instancetype)stateWithCode:(NSString*)stateCode inCountry:(NSString*)countryCode {
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:statePlistName ofType:@"plist"];
+    NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:statePlistName ofType:@"plist"];
     NSDictionary *statesDict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
     NSArray *selectedStates = statesDict[countryCode];
     if (selectedStates) {
@@ -22,7 +22,7 @@ static NSString *statePlistName = @"states";
             RNState *state = [RNState new];
             state.stateCode = stateDict[@"code"];
             state.stateName = stateDict[@"name"];
-            state.stateImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", countryCode, state.stateCode]];
+            state.stateImage = [[self class] imageForState:state.stateCode inCountry:countryCode];
             return state;
         }
     }
@@ -30,7 +30,7 @@ static NSString *statePlistName = @"states";
 }
 
 + (UIImage*)imageForState:(NSString*)stateCode inCountry:(NSString*)countryCode {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", countryCode, stateCode]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"%@_%@", countryCode, stateCode] inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil];
 }
 
 @end
