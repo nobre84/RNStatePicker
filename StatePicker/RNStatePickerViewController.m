@@ -49,7 +49,7 @@ static NSString *statePlistName = @"states";
 - (instancetype)init {
     if (self = [super initWithStyle:UITableViewStylePlain]) {
         _countryCode = @"BR";
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:statePlistName ofType:@"plist"];
+        NSString *filePath = [[NSBundle bundleForClass:[self class]] pathForResource:statePlistName ofType:@"plist"];
         NSDictionary *statesDict = [[NSDictionary alloc] initWithContentsOfFile:filePath];
         NSArray *brStates = statesDict[_countryCode];
         NSMutableArray *states = [NSMutableArray new];
