@@ -265,11 +265,13 @@ static NSString *statePlistName = @"states";
     for (NSArray *section in _sections) {
         for (id<RNState> state in section)
         {
+            if ([[state stateName] length] >= [searchText length]) {
                 NSComparisonResult result = [state.stateName compare:searchText options:(NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch) range:NSMakeRange(0, [searchText length])];
                 if (result == NSOrderedSame)
                 {
                     [_filteredList addObject:state];
                 }
+            }
         }
     }
 }
